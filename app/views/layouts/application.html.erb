@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ToDoList</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
+  <%= render 'layouts/header' %>
+  <body class='d-flex flex-column'>
+    <div class='row no-gutters'>
+      <div class='col-12'>
+        <%= render partial: 'layouts/flash', flash: flash %>
+        <%= yield %>
+      </div>
+    </div>
   </body>
+  <%= render 'layouts/footer' %>
 </html>
+
