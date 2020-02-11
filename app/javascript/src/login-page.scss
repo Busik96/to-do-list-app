@@ -1,0 +1,20 @@
+.background {
+    background-image: url('./../images/to-do-list.jpg');
+    background-size: cover;
+    min-height: auto;
+  }
+
+.login-page {
+  .divider {
+    margin: 1rem;
+    padding: 0 0.5rem;
+    border-right: 1px solid $gray-600;
+    border-left: 1px solid $gray-600;
+  }
+
+  .external_login_icon {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

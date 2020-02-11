@@ -1,10 +1,38 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6 col-sm-12">
-      Tu pierdolenie
-    </div>
-    <div class="col-md-6 col-sm-12">
-      Tu bedzie logowanie
+<div class="row h-100">
+  <div class="col-md-6 col-sm-12 img_with_text p-0 background_home_foto center-content">
+    <h2 class="text-center text-white text_with_border">Your simple organizer!</br>
+     Sign up in our app and make sure you don't miss anything!
+    </h2>
+  </div>
+  <div class="col-md-6 col-sm-12 p-4">
+    <div class="pl-5 pr-5">
+      <h3 class="text-center">Sign up</h3>
+      <%= simple_form_for(@user, as: :user, url: registration_path(@user)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :name,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "name" }%>
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" }%>
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+        </div>
+        <div class="form-actions login-page center-content">
+          <%= f.button :submit, "Sign up", class: 'btn btn-outline-success' %>
+          <span class="divider">or</span>
+          <%= link_to '', user_facebook_omniauth_authorize_path, class: 'fab external_login_icon fa-facebook fa-lg' %>
+          <%= link_to '', user_github_omniauth_authorize_path, class: 'pl-2 external_login_icon fab fa-github fa-lg ' %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
+

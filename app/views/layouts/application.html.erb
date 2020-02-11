@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <%= render 'layouts/header' %>
-  <body class='d-flex flex-column'>
-    <div class='row no-gutters'>
-      <div class='col-12'>
-        <%= render partial: 'layouts/flash', flash: flash %>
-        <%= yield %>
-      </div>
+  <head>
+    <title>To Do List</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="icon" href="/favicon.ico">
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body class='d-flex flex-column h-100'>
+    <%= render 'layouts/header' %>
+    <div class='container-fluid h-100'>
+      <%= render partial: 'layouts/flash', flash: flash %>
+      <%= yield %>
     </div>
+    <%= render 'layouts/footer' %>
   </body>
-  <%= render 'layouts/footer' %>
 </html>
 
