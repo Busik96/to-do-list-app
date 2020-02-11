@@ -29,7 +29,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable,
          :omniauthable, omniauth_providers: %i[facebook github]
-  has_many :authorizations
+  has_many :authorizations, dependent: :delete_all
+  has_many :tasks, dependent: :destroy
 
   validates :name, presence: true
 

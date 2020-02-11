@@ -15,13 +15,12 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
   justify-content: center;
 }
 
-html{
-  height: 100%;
+html, body, main {
+  min-height: 100vh;
 }
 
 body {
   font-family: 'Font Awesome 5 Free';
-  height: 100%;
 }
 
 hr {

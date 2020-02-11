@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     }
   root to: "home#index"
 
+  resources :tasks
+
   get '/users', to: 'home#index'
 end

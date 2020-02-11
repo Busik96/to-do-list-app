@@ -3,12 +3,26 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <%= link_to ' To Do List', root_path, class: 'navbar-brand ml-3 fas fa-calendar-check fa-lg '%>
+    <% if user_signed_in? %>
+      <%= link_to ' To Do List', tasks_path, class: 'navbar-brand ml-3 fas fa-calendar-check fa-lg '%>
+    <% else %>
+      <%= link_to ' To Do List', root_path, class: 'navbar-brand ml-3 fas fa-calendar-check fa-lg '%>
+    <% end %>
     <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo03">
       <ul class="navbar-nav my-2 my-lg-0">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-success' %>
+            <div class="btn-group">
+              <span class="center-content dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-circle pr-2"></i>
+                <%= current_user.name || current_user.email %>
+              </span>
+              <div class="dropdown-menu dropdown-menu-right">
+                <%= link_to 'Edit profile', edit_user_registration_path, class: 'dropdown-item' %>
+                <hr/>
+                <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+              </div>
+            </div>
           </li>
         <% else %>
           <li class="nav-item">

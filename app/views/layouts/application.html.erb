@@ -8,12 +8,14 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body class='d-flex flex-column h-100'>
+  <body class='d-flex flex-column'>
     <%= render 'layouts/header' %>
-    <div class='container-fluid h-100'>
-      <%= render partial: 'layouts/flash', flash: flash %>
-      <%= yield %>
-    </div>
+    <main>
+      <div class='container-fluid min-vh-100'>
+        <%= render partial: 'layouts/flash', flash: flash %>
+        <%= yield %>
+      </div>
+    </main>
     <%= render 'layouts/footer' %>
   </body>
 </html>
