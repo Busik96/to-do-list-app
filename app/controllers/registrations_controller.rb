@@ -3,7 +3,6 @@
 # frozen_string_lireral: true
 
 class RegistrationsController < Devise::RegistrationsController
-
   def new
     redirect_to root_url
   end

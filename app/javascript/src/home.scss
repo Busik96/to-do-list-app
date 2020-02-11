@@ -1,5 +1,8 @@
 .background_home_foto {
   background-image: url('./../images/background_foto.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
   width: 100%;
   opacity: 0.6;

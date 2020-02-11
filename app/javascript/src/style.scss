@@ -4,6 +4,7 @@
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '/home.scss';
 @import './login-page.scss';
@@ -14,10 +15,19 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
   justify-content: center;
 }
 
+html{
+  height: 100%;
+}
+
 body {
   font-family: 'Font Awesome 5 Free';
+  height: 100%;
 }
 
 hr {
   width: 60%;
+}
+
+.bg-nav {
+  background-color: #EBEBEB;
 }
