@@ -1,0 +1,29 @@
+<div class="row justify-content-center align-items-center login-page background">
+  <div class="col-md-5 col-sm-12">
+    <div class="m-3 p-3 bg-light rounded">
+      <h3 class="text-center">Edit task</h3>
+      <%= simple_form_for(@task, url: task_path(@task), html: { method: :patch })  do |f| %>
+        <div class="form-inputs">
+          <%= f.input :description,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "description" }%>
+          <%= f.input :address,
+                      input_html: { autocomplete: "address" }%>
+          <%= f.input :due_date,
+                      as: :date,
+                      input_html: { autocomplete: "due_date" } %>
+          <%= f.input :due_time,
+                      as: :time,
+                      hint: 'Leave empty if you want..',
+                      input_html: { autocomplete: "new-password" } %>
+        </div>
+        <div class="form-actions login-page center-content">
+          <%= f.button :submit, "Save task", class: 'btn btn-outline-success' %>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+
+
