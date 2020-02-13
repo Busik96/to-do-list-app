@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery
 
+  rescue_from Pundit::NotAuthorizedError, with: :deny_access
+
   include Pundit
   include Pagy::Backend
 
@@ -14,6 +16,10 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def deny_access
+    render status: :forbidden, plain: 'You shall not pass!'
+  end
 
   def after_sign_in_path_for(_)
     tasks_path

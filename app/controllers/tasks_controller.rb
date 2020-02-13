@@ -18,9 +18,12 @@ class TasksController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    authorize @task
+  end
 
   def update
+    authorize @task
     if @task.update(task_params)
       flash[:success] = 'Task updated correctly!'
       redirect_to tasks_path
@@ -32,6 +35,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
+    authorize @task
     flash[:success] = 'Task deleted correctly!'
     redirect_to tasks_path
   end
