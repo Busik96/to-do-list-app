@@ -8,6 +8,8 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '/home.scss';
 @import './login-page.scss';
+@import './tasks.scss';
+@import '~flatpickr/dist/flatpickr.min';
 
 .center-content {
   display: flex;
@@ -29,4 +31,8 @@ hr {
 
 .bg-nav {
   background-color: #EBEBEB;
+}
+
+.form-control[readonly] {
+  background: white;
 }

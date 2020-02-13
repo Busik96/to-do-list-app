@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: tasks
@@ -21,4 +23,7 @@ class Task < ApplicationRecord
   belongs_to :user
 
   validates :description, presence: true
+
+  scope :pending, -> { where(finished: false).order(created_at: :asc) }
+  scope :finished, -> { where(finished: true).order(updated_at: :desc) }
 end

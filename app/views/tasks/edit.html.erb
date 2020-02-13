@@ -11,12 +11,12 @@
           <%= f.input :address,
                       input_html: { autocomplete: "address" }%>
           <%= f.input :due_date,
-                      as: :date,
-                      input_html: { autocomplete: "due_date" } %>
+                      as: :string,
+                      input_html: { class: 'datepicker' } %>
           <%= f.input :due_time,
-                      as: :time,
                       hint: 'Leave empty if you want..',
-                      input_html: { autocomplete: "new-password" } %>
+                      as: :string,
+                      input_html: { class: 'timepicker' }  %>
         </div>
         <div class="form-actions login-page center-content">
           <%= f.button :submit, "Save task", class: 'btn btn-outline-success' %>
