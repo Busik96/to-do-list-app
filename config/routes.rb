@@ -7,7 +7,12 @@ Rails.application.routes.draw do
     }
   root to: "home#index"
 
-  resources :tasks
+  resources :tasks do
+    member do
+      patch :finish
+    end
+  end
 
   get '/users', to: 'home#index'
+
 end
