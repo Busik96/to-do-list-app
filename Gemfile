@@ -8,6 +8,8 @@ ruby '2.7.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'jbuilder', '~> 2.7'
+gem 'omniauth-facebook'
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem 'pagy'
 gem 'pg'
 gem 'puma', '~> 4.1'
@@ -18,8 +20,7 @@ gem 'sidekiq'
 gem 'simple_form'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
-gem 'omniauth-facebook'
-gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem 'crono'
 
 group :development, :test do
   gem 'annotate'
