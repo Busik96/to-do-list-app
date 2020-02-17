@@ -15,8 +15,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[name])
   end
 
-  protected
-
   def deny_access
     render status: :forbidden, plain: 'You shall not pass!'
   end

@@ -12,3 +12,4 @@
 # end
 #
 Crono.perform(FinishedTasksCleanerJob).every 1.day
+Crono.perform(EnqueueReminderJob).every 1.day, at: '00:00'
