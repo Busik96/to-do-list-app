@@ -31,7 +31,7 @@ group :development, :test do
   gem 'pry', git: 'https://github.com/pry/pry.git'
   gem 'pry-rails'
   gem 'rails-controller-testing'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '4.0.0.beta3'
   gem 'rubocop'
   gem 'rubocop-rspec', require: false
   gem 'shoulda-matchers'

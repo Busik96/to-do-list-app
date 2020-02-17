@@ -25,15 +25,11 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-require 'rails_helper'
-
-RSpec.describe User, type: :model do
-  describe 'associations' do
-    it { is_expected.to have_many(:authorizations) }
-    it { is_expected.to have_many(:tasks) }
-  end
-
-  describe 'validations' do
-    it { is_expected.to validate_presence_of(:name) }
+FactoryBot.define do
+  factory :user do
+    confirmed_at { Faker::Date.backward(days: 14) }
+    name { Faker::Name.name }
+    email { Faker::Internet.free_email }
+    password { Faker::Internet.password }
   end
 end
