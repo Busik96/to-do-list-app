@@ -94,6 +94,9 @@ GEM
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.6)
+    crono (1.1.2)
+      activerecord (>= 4.0)
+      activesupport (>= 4.0)
     database_cleaner (1.8.2)
     debug_inspector (0.0.3)
     devise (4.7.1)
@@ -330,6 +333,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (>= 1.4.2)
+  crono
   database_cleaner
   devise
   dotenv-rails

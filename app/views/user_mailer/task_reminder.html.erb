@@ -1,0 +1,7 @@
+<h1>Hello <%= @user.name %>,</h1>
+
+<p>
+  This a reminder about task <%= @task.description %>
+  <br/>
+  This needs to be done till <%= @task.due_date %> <%= @task.due_time.present? ? @task.due_time.strftime('%R') : nil %>
+</p>

@@ -5,41 +5,66 @@
         <h2>Add your first task!</h2>
       </div>
     <% else %>
+      <% if @tasks_pending.present? %>
+      <h2 class="text-center">Tasks to do:</h2>
       <table class="table ">
         <thead class="thead-success">
-          <tr>
+          <tr class="text-center">
             <th scope="col">Descriprion</th>
             <th scope="col">Finished</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
-        <% @tasks.each do |task| %>
-          <tbody>
-            <tr>
-              <th scope="row"><%= task.description%></th>
-              <td>czekbox</td>
-              <td>
-                <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-trigger="click"
-                data-content="
-                  <%= task.address %>
-                  <%= task.due_date %>
-                  <% if task.due_time.present? %>
-                    <%= task.due_time.hour %>:<%= task.due_time.min %>
-                  <% end %>
-                ">
-                  Details
-                </button>
-                <%= link_to 'edit', edit_task_path(task), class: 'btn btn-success' %>
-                <%= link_to 'destroy', task_path(task), method: :delete,
-                  class: 'btn btn-danger', data: { confirm: 'Czy na pewno?'} %>
-              </td>
+          <% @tasks_pending.each do |task| %>
+            <tbody>
+              <tr class="text-center">
+                <th scope="row"><%= task.description%></th>
+                <td>
+                  <%= check_box_tag "finished_#{task.id}-#{rand(9999999999)}", task.id, false, data: { remote: true, url: "/tasks/#{task.id}/finish", params: "task[finished]=true", method: "patch" } %>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-secondary fas fa-info-circle" data-container="body" data-toggle="popover" data-placement="right" data-trigger="click" title="Details"
+                  data-content="
+                    <%= task.address %>
+                    <%= task.due_date %>
+                    <% if task.due_time.present? %>
+                      <%= task.due_time.strftime("%R") %>
+                    <% end %>
+                  ">
+                  </button>
+                  <%= link_to '', edit_task_path(task), class: 'btn btn-success fas fa-edit' %>
+                  <%= link_to '', task_path(task), method: :delete,
+                    class: 'btn btn-danger fas fa-trash', data: { confirm: 'Are you shure?'} %>
+                </td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      <% end %>
+      <% if @tasks_finished.present? %>
+        <h2 class="text-center">Finished tasks:</h2>
+        <table class="table ">
+          <thead class="thead-success">
+            <tr class="text-center">
+              <th scope="col">Descriprion</th>
+              <th scope="col">Finished</th>
             </tr>
-          </tbody>
-        <% end %>
-      </table>
+          </thead>
+          <% @tasks_finished.each do |task| %>
+            <tbody>
+              <tr class="text-center">
+                <th scope="row" class="font-italic line-through"><%= task.description%></th>
+                <td>
+                  <%= check_box_tag "finished_#{task.id}-#{rand(9999999999)}", task.id, true, data: { remote: true, url: "/tasks/#{task.id}/finish", params: "task[finished]=false", method: "patch" } %>
+                </td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      <% end %>
     <% end %>
   </div>
-  <div class="col-md-6 col-sm-12 p-4">
+  <div class="col-md-6 col-sm-12 p-4 center-content">
     <div class=" jumbotron pl-5 pr-5">
       <h3 class="text-center">Add task</h3>
       <%= simple_form_for(@task, as: :task, url: tasks_path(@task)) do |f| %>
@@ -51,12 +76,12 @@
           <%= f.input :address,
                       input_html: { autocomplete: "address" }%>
           <%= f.input :due_date,
-                      as: :date,
-                      input_html: { autocomplete: "due_date" } %>
+                      as: :string,
+                      input_html: { class: 'datepicker' } %>
           <%= f.input :due_time,
-                      as: :time,
                       hint: 'Leave empty if you want..',
-                      input_html: { autocomplete: "new-password" } %>
+                      as: :string,
+                      input_html: { class: 'timepicker' }  %>
         </div>
         <div class="form-actions login-page center-content">
           <%= f.button :submit, "Add task", class: 'btn btn-outline-success' %>
@@ -64,4 +89,4 @@
       <% end %>
     </div>
   </div>
-</dvi>
+</div>
