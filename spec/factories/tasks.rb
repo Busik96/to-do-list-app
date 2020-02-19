@@ -23,10 +23,13 @@ FactoryBot.define do
     description { Faker::Lorem.paragraph }
     address { Faker::Address.city }
     due_date { Date.tomorrow }
-    due_time { '14:00' }
 
     trait :finished do
       finished { true }
+    end
+
+    trait :with_time do
+      due_time { '14:00' }
     end
   end
 end
