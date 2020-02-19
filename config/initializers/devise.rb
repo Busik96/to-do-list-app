@@ -285,7 +285,7 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   config.omniauth :facebook, ENV["APP_FB_ID"], ENV["APP_FB_SECRET"],
-    callback_url: "http://localhost:5000/users/auth/facebook/callback"
+    callback_url: "https://todolist-busik-app.herokuapp.com/users/auth/facebook/callback"
 
   config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: 'user'
 
