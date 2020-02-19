@@ -1,4 +1,4 @@
 Hello <%= @user.name %>,
 
 This a reminder about task <%= @task.description %>
-This needs to be done till <%= @task.due_date %> <%= @task.due_time.present? ? @task.due_time.stftime('%R') : nil %>
+This needs to be done till <%= @task.due_date %> <%= @task.due_time.present? ? @task.due_time.strftime('%R') : nil %>
